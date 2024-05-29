@@ -73,6 +73,10 @@ where
         ColorPreference::Never => cmd.args(["--color", "never"]),
     };
 
+    log::info!(
+        "rustflags: {}",
+        std::env::var("RUSTFLAGS").unwrap_or("no_rust_flags".to_string())
+    );
     log::info!("Invoking cargo: {:?}", cmd);
 
     let mut child = cmd
@@ -198,6 +202,7 @@ pub(crate) fn compile_project(
         }
     }
 
+    log::info!("final env: {:#?}", final_env);
     let artifacts = invoke_cargo(
         "build",
         [&["--message-format=json-render-diagnostics"], args].concat(),
