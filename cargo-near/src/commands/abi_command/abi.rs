@@ -88,7 +88,7 @@ pub(crate) fn generate_abi(
     let dylib_artifact = util::compile_project(
         &crate_metadata.manifest_path,
         &[
-            &["--features", "near-sdk/__abi-generate"] as &[&str],
+            &["--features", "near-sdk/__abi-generate", "--release"] as &[&str],
             cargo_args,
         ]
         .concat(),
