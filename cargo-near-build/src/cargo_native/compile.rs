@@ -25,7 +25,7 @@ where
     let mut final_env = BTreeMap::new();
 
     if hide_warnings {
-        env.push(("RUSTFLAGS", "-Awarnings"));
+        env.push(("RUSTFLAGS", "--verbose"));
     }
 
     for (key, value) in env {
